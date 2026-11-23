@@ -1,0 +1,14 @@
+[
+  {
+    "question": "What must lenders disclose before sanction?",
+    "expected_page": 3
+  },
+  {
+    "question": "When does a cooling-off period apply?",
+    "expected_page": 5
+  },
+  {
+    "question": "What fee applies when payment is late?",
+    "expected_page": 2
+  }
+]
