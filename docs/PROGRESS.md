@@ -260,3 +260,14 @@
   - [Split deployment](learn/33-split-deployment.md)
 - **Problems & fixes:** none in the unit test.
 - **Next step:** Create Supabase, Render or Railway, and Vercel, then set the env vars listed in the README.
+
+---
+
+### [2026-11-24] Alembic percent in the database URL
+- **Goal:** Let `alembic upgrade head` run on Render when the Supabase password is URL-encoded.
+- **What was done:** `backend/alembic/env.py` doubles `%` before storing the database URL in Alembic's config.
+- **How to run/test it:** Push to GitHub so Render redeploys, then open `/health`.
+- **Result:** code change only. The new deploy has not run yet.
+- **Concepts introduced:** none.
+- **Problems & fixes:** ConfigParser rejected `%40` in the password as invalid interpolation, so uvicorn never started and Render reported no open port.
+- **Next step:** Push this change and redeploy Render. Then check `/health`.

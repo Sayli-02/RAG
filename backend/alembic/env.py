@@ -22,8 +22,9 @@ config = context.config
 if config.config_file_name is not None:
     fileConfig(config.config_file_name)
 
-# Set database URL dynamically from app settings
-config.set_main_option("sqlalchemy.url", settings.database_url)
+# ConfigParser treats a single % as interpolation. A URL-encoded password uses %40 for @,
+# so each % is stored as %% and Alembic turns it back into % when it reads the URL.
+config.set_main_option("sqlalchemy.url", settings.database_url.replace("%", "%%"))
 
 # Model's MetaData object for 'autogenerate' support
 target_metadata = Base.metadata
