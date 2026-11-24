@@ -271,3 +271,14 @@
 - **Concepts introduced:** none.
 - **Problems & fixes:** ConfigParser rejected `%40` in the password as invalid interpolation, so uvicorn never started and Render reported no open port.
 - **Next step:** Push this change and redeploy Render. Then check `/health`.
+
+---
+
+### [2026-11-24] Neater PDF picker
+- **Goal:** Replace the browser's default file button on the upload form.
+- **What was done:** The PDF field in `frontend/src/pages/Documents.jsx` is a teal Choose PDF control with the file name beside it.
+- **How to run/test it:** Redeploy the Vercel site, open Documents, and choose a PDF.
+- **Result:** code change only. The live site still shows the old control until Vercel rebuilds.
+- **Concepts introduced:** none.
+- **Problems & fixes:** none.
+- **Next step:** Push and redeploy Vercel to see the control on the hosted site.

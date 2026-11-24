@@ -137,13 +137,22 @@ export function Documents() {
           </label>
           <label className="text-sm font-medium">
             PDF
-            <input
-              required
-              type="file"
-              accept="application/pdf,.pdf"
-              onChange={(event) => setFile(event.target.files?.[0] || null)}
-              className="mt-1 w-full cursor-pointer text-sm font-normal"
-            />
+            <span className="mt-1 flex min-w-0 items-center gap-2 rounded-lg border border-line bg-white px-2 py-1.5 focus-within:outline focus-within:outline-2 focus-within:outline-offset-2 focus-within:outline-teal-deep">
+              <span className="relative shrink-0">
+                <input
+                  required
+                  type="file"
+                  accept="application/pdf,.pdf"
+                  aria-label="PDF file"
+                  onChange={(event) => setFile(event.target.files?.[0] || null)}
+                  className="absolute inset-0 cursor-pointer opacity-0"
+                />
+                <span className="pointer-events-none block rounded-md bg-teal-deep px-3 py-1 text-sm font-medium text-white">
+                  Choose PDF
+                </span>
+              </span>
+              <span className="min-w-0 truncate font-normal text-muted">{file ? file.name : 'No file chosen'}</span>
+            </span>
           </label>
         </div>
         <button
